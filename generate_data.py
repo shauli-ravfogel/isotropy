@@ -90,7 +90,7 @@ if __name__ == '__main__':
     parser.add_argument('--freq-bins', dest='freq_bins', type=int,
                         default=10)
     parser.add_argument('--window-size', dest='window_size', type=int,
-                        default=5)                                                                            
+                        default=3)                                                                            
     args = parser.parse_args()
     
     sents = load_sents()
@@ -101,8 +101,8 @@ if __name__ == '__main__':
     
     train_df = pd.DataFrame(train_data)
     del train_data
-    train_df.to_csv("train.tsv", sep="\t")
+    train_df.to_csv(f"train.window_size={args.window_size}.tsv", sep="\t")
     del train_df
     dev_df = pd.DataFrame(dev_data)
     del dev_data
-    dev_df.to_csv("dev.tsv", sep = "\t")
+    dev_df.to_csv(f"dev.window_size={args.window_size}.tsv", sep = "\t")
